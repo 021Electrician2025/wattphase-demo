@@ -197,6 +197,166 @@ export const emergencyLocation = {
   address: "Bridge St, Tawnies Upper, Clonakilty, Co. Cork, Ireland",
 };
 
+// AnPost location data - Clonakilty area
+export const anpostLocation = {
+  lat: 51.62271186746584,
+  lng: -8.8911,
+  name: "AnPost Clonakilty",
+  address: "Bridge St, Tawnies Upper, Clonakilty, Co. Cork, Ireland",
+};
+
+// TKMaxx location data - Douglas area
+export const tkmaxxLocation = {
+  lat: 51.8785,
+  lng: -8.4756,
+  name: "TKMaxx Douglas",
+  address: "Douglas Village Shopping Centre, Douglas, Cork, T12 PPK8, Ireland",
+};
+
+// AnPost electricians - Positioned around Clonakilty area
+export const anpostElectricians: Electrician[] = [
+  {
+    id: "1",
+    name: "021 Electrician",
+    profilePhoto: "/api/placeholder/64/64",
+    rating: 4.8,
+    eta: 8,
+    phone: "+353 87 123 4567",
+    email: "john.murphy@wattphase.ie",
+    specializations: ["Industrial", "3-Phase Systems", "Emergency Response"],
+    isAvailable: true,
+    location: { lat: 51.6195, lng: -8.8845 }, // Clonakilty North - Closest to AnPost
+  },
+  {
+    id: "2",
+    name: "021 Electrician",
+    profilePhoto: "/api/placeholder/64/64",
+    rating: 4.9,
+    eta: 12,
+    phone: "+353 87 234 5678",
+    email: "sarah.oconnor@wattphase.ie",
+    specializations: ["Commercial", "Power Distribution", "Fault Diagnosis"],
+    isAvailable: true,
+    location: { lat: 51.6251, lng: -8.8975 }, // Clonakilty West
+  },
+  {
+    id: "3",
+    name: "021 Electrician",
+    profilePhoto: "/api/placeholder/64/64",
+    rating: 4.7,
+    eta: 18,
+    phone: "+353 87 345 6789",
+    email: "michael.kelly@wattphase.ie",
+    specializations: ["Residential", "Maintenance", "Safety Inspections"],
+    isAvailable: true,
+    location: { lat: 51.6185, lng: -8.8795 }, // Clonakilty East
+  },
+  {
+    id: "4",
+    name: "021 Electrician",
+    profilePhoto: "/api/placeholder/64/64",
+    rating: 4.9,
+    eta: 15,
+    phone: "+353 87 456 7890",
+    email: "emma.walsh@wattphase.ie",
+    specializations: [
+      "Industrial Automation",
+      "PLC Systems",
+      "Emergency Repairs",
+    ],
+    isAvailable: true,
+    location: { lat: 51.6275, lng: -8.8925 }, // Clonakilty Southwest
+  },
+  {
+    id: "5",
+    name: "021 Electrician",
+    profilePhoto: "/api/placeholder/64/64",
+    rating: 4.6,
+    eta: 25,
+    phone: "+353 87 567 8901",
+    email: "david.ryan@wattphase.ie",
+    specializations: [
+      "High Voltage",
+      "Transformer Maintenance",
+      "Grid Systems",
+    ],
+    isAvailable: true,
+    location: { lat: 51.6155, lng: -8.8735 }, // Clonakilty Southeast
+  },
+];
+
+// TKMaxx electricians - Positioned around Douglas area
+export const tkmaxxElectricians: Electrician[] = [
+  {
+    id: "1",
+    name: "021 Electrician",
+    profilePhoto: "/api/placeholder/64/64",
+    rating: 4.9,
+    eta: 10,
+    phone: "+353 87 111 2233",
+    email: "liam.osullivan@wattphase.ie",
+    specializations: ["Commercial", "Retail Systems", "Emergency Response"],
+    isAvailable: true,
+    location: { lat: 51.8795, lng: -8.4766 }, // Douglas North - Closest to TKMaxx
+  },
+  {
+    id: "2",
+    name: "021 Electrician",
+    profilePhoto: "/api/placeholder/64/64",
+    rating: 4.8,
+    eta: 12,
+    phone: "+353 87 222 3344",
+    email: "siobhan.murphy@wattphase.ie",
+    specializations: ["Shopping Centre Systems", "POS Integration", "Lighting"],
+    isAvailable: true,
+    location: { lat: 51.8775, lng: -8.4746 }, // Douglas East
+  },
+  {
+    id: "3",
+    name: "021 Electrician",
+    profilePhoto: "/api/placeholder/64/64",
+    rating: 4.7,
+    eta: 15,
+    phone: "+353 87 333 4455",
+    email: "conor.fitzgerald@wattphase.ie",
+    specializations: ["HVAC Systems", "Commercial Wiring", "Maintenance"],
+    isAvailable: true,
+    location: { lat: 51.8805, lng: -8.4776 }, // Douglas West
+  },
+  {
+    id: "4",
+    name: "021 Electrician",
+    profilePhoto: "/api/placeholder/64/64",
+    rating: 4.9,
+    eta: 18,
+    phone: "+353 87 444 5566",
+    email: "aisling.brennan@wattphase.ie",
+    specializations: [
+      "Security Systems",
+      "Fire Safety",
+      "Emergency Power",
+    ],
+    isAvailable: true,
+    location: { lat: 51.8765, lng: -8.4736 }, // Douglas South
+  },
+  {
+    id: "5",
+    name: "021 Electrician",
+    profilePhoto: "/api/placeholder/64/64",
+    rating: 4.6,
+    eta: 22,
+    phone: "+353 87 555 6677",
+    email: "declan.mccarthy@wattphase.ie",
+    specializations: [
+      "Industrial Systems",
+      "Power Distribution",
+      "Fault Finding",
+    ],
+    isAvailable: true,
+    location: { lat: 51.8815, lng: -8.4786 }, // Douglas Northwest
+  },
+];
+
 // Generate unique job ticket ID
 export function generateJobTicketId(): string {
   const year = new Date().getFullYear();

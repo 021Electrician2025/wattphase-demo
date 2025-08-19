@@ -219,7 +219,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
       >
         <PowerProvider>
-          <NavigationLayout>{children}</NavigationLayout>
+          {children}
         </PowerProvider>
       </body>
     </html>

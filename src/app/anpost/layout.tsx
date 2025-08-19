@@ -11,46 +11,35 @@ import {
   BarChart3,
   Users,
   CheckCircle,
-  Menu,
-  X,
   Zap,
-  MapPin,
+  ArrowLeft,
   Building,
-  Store,
 } from "lucide-react";
-import { useState } from "react";
 
-const navigationItems = [
-  {
-    href: "/",
-    label: "Overview",
-    icon: BarChart3,
-    description: "Main dashboard",
-  },
+const anpostNavigationItems = [
   {
     href: "/anpost",
-    label: "AnPost",
-    icon: Building,
-    description: "Clonakilty location",
+    label: "Dashboard",
+    icon: BarChart3,
+    description: "Power monitoring",
   },
   {
-    href: "/tkmaxx",
-    label: "TKMaxx",
-    icon: Store,
-    description: "Douglas location",
-  },
-  {
-    href: "/dispatch",
+    href: "/anpost/dispatch",
     label: "Dispatch",
     icon: Users,
-    description: "Original dispatch",
+    description: "Electrician dispatch",
+  },
+  {
+    href: "/anpost/confirmation",
+    label: "Jobs",
+    icon: CheckCircle,
+    description: "Job tracking",
   },
 ];
 
-export function Navigation() {
+function AnPostNavigation() {
   const pathname = usePathname();
   const { state } = usePower();
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const hasActiveAlerts = state.alerts.some((alert) => !alert.acknowledged);
 
@@ -59,19 +48,38 @@ export function Navigation() {
       {/* Mobile Header */}
       <div className="lg:hidden bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between sticky top-0 z-50">
         <div className="flex items-center gap-2">
-          <Zap className="h-6 w-6 text-blue-600" />
-          <span className="font-bold text-lg text-gray-900">Wattphase</span>
+          <Building className="h-6 w-6 text-blue-600" />
+          <span className="font-bold text-lg text-gray-900">AnPost Clonakilty</span>
         </div>
+        <Link href="/">
+          <Button variant="outline" size="sm">
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            Back
+          </Button>
+        </Link>
       </div>
 
       {/* Desktop Sidebar */}
       <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0 lg:bg-white lg:border-r lg:border-gray-200">
         <div className="flex items-center gap-2 px-6 py-4 border-b border-gray-200">
-          <Zap className="h-8 w-8 text-blue-600" />
-          <span className="font-bold text-xl text-gray-900">Wattphase</span>
+          <Building className="h-8 w-8 text-blue-600" />
+          <div>
+            <span className="font-bold text-xl text-gray-900">AnPost</span>
+            <div className="text-sm text-gray-600">Clonakilty</div>
+          </div>
         </div>
+        
+        <div className="px-4 py-3 border-b border-gray-100">
+          <Link href="/">
+            <Button variant="outline" size="sm" className="w-full">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Locations
+            </Button>
+          </Link>
+        </div>
+
         <nav className="flex-1 px-4 py-6 space-y-2">
-          {navigationItems.map((item) => {
+          {anpostNavigationItems.map((item) => {
             const Icon = item.icon;
             const isActive = pathname === item.href;
 
@@ -92,7 +100,7 @@ export function Navigation() {
                     {item.description}
                   </div>
                 </div>
-                {(item.href === "/" || item.href === "/anpost" || item.href === "/tkmaxx") && hasActiveAlerts && (
+                {(item.href === "/anpost") && hasActiveAlerts && (
                   <Badge className="ml-auto bg-red-500 text-white text-xs px-1.5 py-0.5">
                     !
                   </Badge>
@@ -106,7 +114,7 @@ export function Navigation() {
       {/* Bottom Navigation for Mobile */}
       <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-4 py-2 z-30">
         <div className="flex justify-around">
-          {navigationItems.map((item) => {
+          {anpostNavigationItems.map((item) => {
             const Icon = item.icon;
             const isActive = pathname === item.href;
 
@@ -120,7 +128,7 @@ export function Navigation() {
               >
                 <Icon className="h-5 w-5" />
                 <span className="text-xs font-medium">{item.label}</span>
-                {(item.href === "/" || item.href === "/anpost" || item.href === "/tkmaxx") && hasActiveAlerts && (
+                {(item.href === "/anpost") && hasActiveAlerts && (
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full" />
                 )}
               </Link>
@@ -132,10 +140,14 @@ export function Navigation() {
   );
 }
 
-export function NavigationLayout({ children }: { children: React.ReactNode }) {
+export default function AnPostLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navigation />
+      <AnPostNavigation />
       <div className="lg:pl-64">
         <main className="pb-16 lg:pb-0">{children}</main>
       </div>
